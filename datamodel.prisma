@@ -1,0 +1,29 @@
+type User {
+  id: ID! @id
+  email: String! @unique
+  password: String!
+  createdAt: DateTime @createdAt
+  updatedAt: DateTime @updatedAt
+  blog: Blog @relation(name: "BlogManager", onDelete: CASCADE)
+}
+
+type Blog {
+  id: ID! @id
+  name: String! @unique
+  description: String
+  createdAt: DateTime @createdAt
+  logoUrl: String!
+  updatedAt: DateTime @updatedAt
+  manager: User! @relation(link: INLINE, name: "BlogManager", onDelete: SET_NULL)
+  posts: [Post!]! @relation(name: "Posts", onDelete: CASCADE)
+}
+
+type Post {
+  id: ID! @id
+  title: String!
+  content: String! @default(value: "")
+  published: Boolean! @default(value: false)
+  createdAt: DateTime @createdAt
+  updatedAt: DateTime @updatedAt
+  blog: Blog! @relation(name: "Posts", onDelete: SET_NULL)
+}
