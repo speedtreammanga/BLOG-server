@@ -6,10 +6,10 @@ import userApi from './endpoints/user';
 import blogApi from './endpoints/blog';
 import postApi from './endpoints/post';
 
-let origin = 'http://localhost:3000';
+let origin = 'https://blogr-webapp.herokuapp.com/';
 if (process.env.NODE_ENV !== 'production') {
   require('../config');
-  origin = 'https://blogr-webapp.herokuapp.com/';
+  origin = 'http://localhost:3000';
 }
 
 const PORT = process.env.PORT || 8080;
