@@ -29,10 +29,14 @@ app.use(function(req, res, next) {
 [userApi, blogApi, postApi].forEach(api => {
   api.forEach(route => {
     const middleware = route.middleware || [];
-    app[route.method](route.url, middleware, route.callback)
-  })
-})
+    app[route.method](route.url, middleware, route.callback);
+  });
+});
+
+app.get('/temp', function(req, res){
+  return res.json({ response: 'success' })
+});
 
 app.listen(PORT, () =>
   console.log(`Server is running on http://localhost:${PORT}`),
-)
+);
