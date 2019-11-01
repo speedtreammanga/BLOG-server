@@ -1,5 +1,7 @@
 const jwt = require('jsonwebtoken')
-import { JWT_SECRET } from '../config';
+// import { JWT_SECRET } from '../config';
+
+const JWT_SECRET = process.env.JWT_SECRET;
 
 export const loggedInGuard = (req, res, next) => {
     const accessToken = req.headers['authorization']

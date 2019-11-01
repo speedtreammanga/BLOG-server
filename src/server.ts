@@ -9,6 +9,10 @@ import userApi from './endpoints/user';
 import blogApi from './endpoints/blog';
 import postApi from './endpoints/post';
 
+if (process.env.NODE_ENV !== 'production') {
+  require('../config');
+}
+
 const PORT = process.env.PORT || 8080;
 const app = express()
 app.use(cors())

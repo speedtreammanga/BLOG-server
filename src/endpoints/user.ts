@@ -2,8 +2,10 @@ import * as bcrypt from 'bcrypt';
 import * as jwt from 'jsonwebtoken';
 import * as passport from "passport";
 import { prisma, User, Blog } from '../../generated/prisma-client/index';
-import { JWT_SECRET } from '../../config';
+// import { JWT_SECRET } from '../../config';
 import { loggedInGuard } from '../middleware';
+
+const JWT_SECRET = process.env.JWT_SECRET;
 
 const isEmpty = s => (s && s.length == 0) || s === ""
 const saltRounds = 10
