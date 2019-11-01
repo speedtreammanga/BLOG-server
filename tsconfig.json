@@ -1,5 +1,22 @@
 {
   "compilerOptions": {
-    "lib": ["es2016", "esnext.asynciterable"]
-  }
+    "moduleResolution": "node",
+    "noImplicitAny": false,
+    "removeComments": true,
+    "preserveConstEnums": true,
+    "outDir": "./build",
+    "sourceMap": true,
+    "lib": ["es2016", "esnext.asynciterable", "dom"],
+    "types": ["bcrypt", "body-parser", "cors", "express", "passport", "jsonwebtoken"]
+  },
+  "include": [
+    "src/**/*"
+  ],
+  "exclude": [
+    "node_modules",
+    "node_modules/apollo-utilities",
+    "generated",
+    "build",
+    "**/*.spec.ts",
+  ]
 }

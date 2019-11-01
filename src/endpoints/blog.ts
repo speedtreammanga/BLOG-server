@@ -1,4 +1,5 @@
-import { prisma, Blog } from '../../generated/prisma-client';
+import { prisma } from '../../generated/prisma-client/index';
+// import { prisma } from '../../generated/prisma-client';
 import { loggedInGuard } from "../middleware";
 
 const endpoints = [

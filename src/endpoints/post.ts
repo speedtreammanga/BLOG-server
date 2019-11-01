@@ -1,4 +1,4 @@
-import { prisma, Blog, Post, User } from '../../generated/prisma-client'
+import { prisma, Blog, Post, User } from '../../generated/prisma-client/index'
 import { loggedInGuard } from '../middleware';
 
 

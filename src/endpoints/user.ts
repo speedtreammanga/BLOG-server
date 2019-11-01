@@ -1,7 +1,7 @@
-const jwt = require('jsonwebtoken')
-import * as bcrypt from 'bcrypt'
-import { prisma, User } from '../../generated/prisma-client'
+import * as bcrypt from 'bcrypt';
+import * as jwt from 'jsonwebtoken';
 import * as passport from "passport";
+import { prisma, User, Blog } from '../../generated/prisma-client/index';
 import { JWT_SECRET } from '../../config';
 import { loggedInGuard } from '../middleware';
 
@@ -38,7 +38,7 @@ const endpoints = [
 			const { email, password } = req.body
 			prisma
 			.user({ email: email })
-			.then(user => {
+			.then((user:User) => {
 				if (!user) {
 					return res.status(400).send({ error: 'invalid email'})
 				}
@@ -94,7 +94,7 @@ const endpoints = [
 		callback: (req, res) => {
 			prisma
 			.user({ id: req.userId })
-			.then(user => {
+			.then((user: User) => {
 				res.json(user)
 			})
 			.catch(err => {
@@ -130,7 +130,7 @@ const endpoints = [
 						blog: {
 							...obj.blog,
 							posts: obj.blog.posts
-								.sort((a,b) => a.updatedAt < b.updatedAt ? 1 : -1)
+								.sort((a: Blog, b: Blog) => a.updatedAt < b.updatedAt ? 1 : -1)
 						}
 					}
 				}

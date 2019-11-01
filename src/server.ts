@@ -1,18 +1,22 @@
 
-import * as express from 'express'
-import * as bodyParser from 'body-parser'
+import * as express from 'express';
+import * as bodyParser from 'body-parser';
 import * as cors from 'cors';
+// const express = require('express');
+// const bodyParser = require('body-parser');
+// const cors = require('cors');
 import userApi from './endpoints/user';
 import blogApi from './endpoints/blog';
 import postApi from './endpoints/post';
 
+const PORT = process.env.PORT || 8080;
 const app = express()
 app.use(cors())
 app.use(bodyParser.json())
 
 app.use(function(req, res, next) {
-  res.header('Access-Control-Allow-Origin', 'http://localhost:3001');
-  res.header('Access-Control-Allow-Credentials', true);
+  res.header('Access-Control-Allow-Origin', 'http://localhost:3000');
+  // res.header('Access-Control-Allow-Credentials', true);
   res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
   next();
 });
@@ -25,6 +29,6 @@ app.use(function(req, res, next) {
   })
 })
 
-app.listen(8080, () =>
-  console.log('Server is running on http://localhost:8080'),
+app.listen(PORT, () =>
+  console.log(`Server is running on http://localhost:${PORT}`),
 )
