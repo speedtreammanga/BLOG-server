@@ -9,6 +9,7 @@ import userApi from './endpoints/user';
 import blogApi from './endpoints/blog';
 import postApi from './endpoints/post';
 
+console.log(process.env.NODE_ENV);
 if (process.env.NODE_ENV !== 'production') {
   require('../config');
 }
